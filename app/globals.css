@@ -1,0 +1,69 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  @apply bg-night-950 text-parchment-100 font-body antialiased;
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(124, 245, 208, 0.10), transparent),
+    radial-gradient(ellipse 60% 40% at 85% 15%, rgba(255, 209, 102, 0.06), transparent),
+    linear-gradient(180deg, #0a1613 0%, #0f211c 55%, #122a20 100%);
+  min-height: 100dvh;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: rgba(124, 245, 208, 0.35);
+  color: #0a1613;
+}
+
+@layer components {
+  .glass-panel {
+    @apply bg-forest-900/60 border border-fairy-400/15 backdrop-blur-md shadow-[0_8px_32px_rgba(0,0,0,0.35)];
+  }
+
+  .btn-answer {
+    @apply w-full text-left rounded-2xl px-5 py-4 glass-panel border-parchment-100/10
+      text-parchment-100 font-body text-base sm:text-lg
+      transition-all duration-200 ease-out
+      hover:border-fairy-400/50 hover:bg-forest-800/70 hover:-translate-y-0.5
+      focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fairy-400/70
+      disabled:opacity-60 disabled:pointer-events-none;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full
+      bg-fairy-400 text-night-950 font-display font-semibold
+      px-8 py-3.5 text-lg shadow-[0_0_0_rgba(0,0,0,0)]
+      transition-all duration-200 ease-out
+      hover:bg-fairy-300 hover:scale-[1.03] active:scale-[0.98]
+      focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fairy-300 focus-visible:ring-offset-2 focus-visible:ring-offset-night-950;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full
+      bg-transparent border-2 border-parchment-100/30 text-parchment-100 font-display font-medium
+      px-7 py-3 text-base
+      transition-all duration-200 ease-out
+      hover:border-firefly-400/70 hover:text-firefly-300
+      focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-firefly-400/70;
+  }
+
+  .badge-category {
+    @apply inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs sm:text-sm font-display font-medium tracking-wide uppercase
+      bg-firefly-400/15 text-firefly-300 border border-firefly-400/30;
+  }
+}
+
+.firefly-dot {
+  position: absolute;
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgba(255, 226, 130, 0.95) 0%, rgba(255, 209, 102, 0.35) 55%, transparent 75%);
+  filter: blur(0.5px);
+  pointer-events: none;
+}
